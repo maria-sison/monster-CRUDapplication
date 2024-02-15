@@ -4,7 +4,7 @@ import monsters from "./routes/monster.route.js";
 import { connectDB } from "./database/database.js";
 
 const app = express();
-const port = 8000;
+const port = process.env.PORT || 8000;
 
 connectDB();
 // parse application/x-www-form-urlencoded
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-app.use("/monsters", monsters);
+app.use("/", monsters);
 
 app.listen(port, function () {
   console.log(`🚀 Fire app listening on port ${port}!`);
